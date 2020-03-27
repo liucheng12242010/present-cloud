@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="personManage" namespace="/" extends="struts-default">
+	    <!-- 登录配置 -->
+		 <action name="login" class="cn.tedu.action.UserAction">
+            <result name="error" >/index.jsp</result>
+            <result name="success" type="redirect" >/main.jsp</result>
+        </action>
+        <!-- 部门的映射配置 -->
+        <action name="department" class="cn.tedu.action.DepartmentAction">
+        </action>
+        <!-- 员工的映射配置 -->
+        <action name="employee" class="cn.tedu.action.EmployeeAction">
+        </action>      
+	</package>     
+</struts>

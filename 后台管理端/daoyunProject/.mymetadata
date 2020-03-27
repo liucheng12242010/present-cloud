@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="PM_tedu"
+  id="myeclipse.1471572146531"
+  context-root="/PM_tedu"
+  j2ee-spec="5.0"
+  archive="PM_tedu.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
