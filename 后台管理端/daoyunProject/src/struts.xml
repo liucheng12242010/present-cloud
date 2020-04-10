@@ -17,6 +17,7 @@
         <action name="employee" class="cn.daoyun.action.EmployeeAction">
         </action>  
         <action name="register" class="cn.daoyun.action.registerAction">
+        <result name="success" type="redirect" >/register.jsp</result>
         </action>     
 	</package>     
 </struts>
