@@ -1,4 +1,4 @@
-
+﻿
 CREATE DATABASE IF NOT EXISTS `db_t_daoyun` DEFAULT CHARACTER SET utf8 ;
 
 USE `db_t_daoyun`;
@@ -60,4 +60,15 @@ CREATE TABLE `t_user` (
 
 insert  into `t_user`(`userId`,`userName`,`password`) values (1,'lkj','123456');
 
+CREATE TABLE `t_user` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `userName` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `school`   varchar(20), 
+  `gender`   varchar(20), 
+  `college`   varchar(20), 
+  PRIMARY KEY (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+insert  into `t_user`(`userId`,`userName`,`password`,`school`, `gender`, `college`) values (1,'lkj','123456','福州大学','男','数学与计算机学院');
 
