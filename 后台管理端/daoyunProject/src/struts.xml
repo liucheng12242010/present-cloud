@@ -10,14 +10,9 @@
             <result name="error" >/index.jsp</result>
             <result name="success" type="redirect" >/main.jsp</result>
         </action>
-        <!-- 部门的映射配置 -->
-        <action name="department" class="cn.daoyun.action.DepartmentAction">
+        <!-- 注册的映射配置 --> 
+        <action name="register" class="cn.daoyun.action.registerAction"> 
+        	<result name="success" type="redirect" >/register.jsp</result>
         </action>
-        <!-- 员工的映射配置 -->
-        <action name="employee" class="cn.daoyun.action.EmployeeAction">
-        </action>  
-        <action name="register" class="cn.daoyun.action.registerAction">
-        <result name="success" type="redirect" >/register.jsp</result>
-        </action>     
 	</package>     
 </struts>

@@ -9,10 +9,10 @@
 		 <action name="login" class="cn.tedu.action.UserAction">
             <result name="error" >/index.jsp</result>
             <result name="success" type="redirect" >/main.jsp</result>
-        </action>
+         </action>
         <!-- 部门的映射配置 -->
-        <action name="department" class="cn.tedu.action.DepartmentAction">
-        </action>
+        <!-- <action name="department" class="cn.tedu.action.DepartmentAction">
+        </action>  -->
         <!-- 员工的映射配置 -->
         <action name="employee" class="cn.tedu.action.EmployeeAction">
         </action>      

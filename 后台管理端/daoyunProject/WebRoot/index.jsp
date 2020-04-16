@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="layui/css/layui.css" media="all">
+<link rel="stylesheet" href="layui/layui.all.js" media="all">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>到云资源管理系统登录</title>
 <script type="text/javascript">
@@ -11,7 +13,7 @@
 		document.getElementById("password").value = "";
 	}
 	function register(){
-		
+		window.location = "register.jsp";
 	}
 </script>
 <style type="text/css">
@@ -97,7 +99,7 @@ form {
 }
 </style>
 </head>
-<body>
+<body class="layui-layout-body">
 
 	<div id="main" align="center">
 		<img class = "logo" src="" >
@@ -110,9 +112,10 @@ form {
 						id="userName" /> <br>
 				</h2>
 				<h2>
-					密 码： <input type="password" value="" class="inp"
+					密 码：   <input type="password" value="" class="inp"
 						name="user.password" id="password" /> <br>
 				</h2>
+				
 				<div align="center">
 					<input class="btn" type="submit" value="登录" /> &nbsp; 
 					<input class="btn" type="button" value="重置" onclick="resetValue()" /> &nbsp;

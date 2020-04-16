@@ -10,15 +10,11 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cn.daoyun.dao.UserDao;
+import cn.daoyun.dao.registerDao;
 import cn.daoyun.entity.User;
 import cn.daoyun.entity.util.DbUtil;
 import cn.daoyun.entity.util.StringUtil;
 
-/**
- * 注册用户信息
- * @author cdfengyang
- *
- */
 public class registerAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
@@ -42,7 +38,7 @@ public class registerAction extends ActionSupport {
 	}
 
 	DbUtil dbUtil=new DbUtil();
-	UserDao userDao=new UserDao();
+    registerDao register=new registerDao();
 	@Override
 	public String execute() throws Exception {
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -50,14 +46,17 @@ public class registerAction extends ActionSupport {
 		Connection con=null;
 		try{
 			con=dbUtil.getCon();
+			register.register(con, user);
 			return SUCCESS;
 		}catch (Exception e) {
 			e.printStackTrace();
+			System.out.print(e);
 		}finally{
 			try {
 				dbUtil.closeCon(con);
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.print(e);
 			}
 		}
 		return SUCCESS;

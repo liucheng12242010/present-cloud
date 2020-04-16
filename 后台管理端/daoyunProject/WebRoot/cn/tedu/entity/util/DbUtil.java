@@ -10,9 +10,9 @@ import java.sql.DriverManager;
  */
 public class DbUtil {
 
-	private String url="jdbc:mysql://localhost:3306/db_t_pmanager";
+	private String url="jdbc:mysql://129.204.242.132:3306/db_t_pmanager";
 	private String user="root";
-	private String password="111111";
+	private String password="123";
 	private String driver="com.mysql.jdbc.Driver";
 	
 	public Connection getCon() throws Exception{
