@@ -49,8 +49,8 @@ public class UserAction extends ActionSupport {
 	public String execute() throws Exception {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
-		if(StringUtil.isEmpty(user.getUserName())||StringUtil.isEmpty(user.getPassword())){
-			error="用户名或者密码为空！";
+		if(StringUtil.isEmpty(user.getUserId())||StringUtil.isEmpty(user.getPassword())){
+			error="用户账号或者密码为空！";
 			return ERROR;
 		}
 		Connection con=null;
@@ -58,7 +58,7 @@ public class UserAction extends ActionSupport {
 			con=dbUtil.getCon();
 			User currentUser=userDao.login(con, user);
 			if(currentUser==null){
-				error="用户名或者密码错误！";
+				error="用户账号或者密码错误！";
 				return ERROR;
 			}else{
 				session.setAttribute("currentUser", currentUser);

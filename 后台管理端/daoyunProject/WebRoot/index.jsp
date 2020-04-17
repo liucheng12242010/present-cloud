@@ -108,7 +108,7 @@ form {
 			<form action="login" method="post" class="login">
 				<div class="error">${error}</div>
 				<h2>
-					用户名：<input type="text" value="" class="inp" name="user.userName"
+					账号：<input type="text" value="" class="inp" name="user.userId"
 						id="userName" /> <br>
 				</h2>
 				<h2>

@@ -13,9 +13,9 @@
 <title>到云资源管理系统注册</title>
 <script src="Contents/layuiadmin/layui/layui.js"></script>
 <script>
-			layui.use(['form','upload'], function(){
+			layui.use(['form','upload','carousel'], function(){
 				  var form = layui.form
-				  ,upload = layui.upload;
+				  ,carousel = layui.carousel;
 				  //监听提交
 				  form.on('submit(registerForm)', function(data){
 					var param = data.field; 
@@ -26,17 +26,16 @@
 		                    dataType: 'json',
 		                    success: function (res) {    
 		                        if (res.Success == true) {
-		                        
+		                        	layer.msg("注册成功！");
+		                        	window.location = "index.jsp";
 		                        } else {
-		                            
+		                        	layer.msg("用户账号已存在！");
 		                        }
 		                    },
 		                    error: function () {
 		                       
 		                    }
-		                });
-				    layer.msg("注册成功！");
-				    //window.location = "index.jsp";
+		                });  
 				    return false;
 				  });
 				//自定义验证规则
@@ -59,15 +58,20 @@
 					      layedit.sync(editIndex);
 					    }
 					  });
+				//建造轮播实例
+				  carousel.render({
+				    elem: '#showPic'
+				    ,width: '100%' //设置容器宽度
+				    ,arrow: 'always' //始终显示箭头
+				    //,anim: 'updown' //切换动画方式
+				  });
 			});
 </script>
 <body class="layui-layout-body">
-	<div class="layui-btn-fluid">  
+   <div class='layui-bg-gray'>
+	<div class="layui-main">  
 	    <fieldset class="layui-elem-field layui-field-title">
 		  <legend>到云资源管理系统注册</legend>
-		  <div class="layui-field-box">
-		    注册信息：
-		  </div>
 		</fieldset>
 		<form action="register" class="layui-form" method="post">
 		  <div class="layui-form-item">
@@ -91,17 +95,8 @@
 		    </div>
 		  </div>
 		  <div class="layui-form-item">
-		    <label class="layui-form-label">用户角色</label>
-		    <div class="layui-input-block">
-		      <select name="user.role" lay-verify="required">
-		        <option value=""></option>
-		        <option value="0">学生</option>
-		        <option value="1">老师</option>
-		        <option value="2">助教</option>
-		      </select>
-		    </div>
 		    <label class="layui-form-label">所在学校</label>
-		    <div class="layui-input-block">
+		    <div class="layui-input-inline">
 		      <select name="user.school" lay-verify="required">
 		        <option value=""></option>
 		        <option value="福州大学">福州大学</option>
@@ -110,7 +105,7 @@
 		      </select>
 		    </div>
 		    <label class="layui-form-label">所在学院</label>
-		    <div class="layui-input-block">
+		    <div class="layui-input-inline">
 		      <select name="user.college" lay-verify="required">
 		        <option value=""></option>
 		        <option value="数计学院">数计学院</option>
@@ -118,8 +113,19 @@
 		        <option value="艺术学院">艺术学院</option>
 		      </select>
 		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		     <label class="layui-form-label">用户角色</label>
+		    <div class="layui-input-inline">
+		      <select name="user.role" lay-verify="required">
+		        <option value=""></option>
+		        <option value="0">学生</option>
+		        <option value="1">老师</option>
+		        <option value="2">助教</option>
+		      </select>
+		    </div>
 		    <label class="layui-form-label">用户性别</label>
-		    <div class="layui-input-block">
+		    <div class="layui-input-inline">
 		      <select name="user.gender" lay-verify="required">
 		        <option value=""></option>
 		        <option value="男">男</option>
@@ -136,10 +142,19 @@
 		  <div class="layui-form-item">
 		    <div class="layui-input-block">
 		      <button class="layui-btn" type="submit" lay-submit="" lay-filter="registerForm">立即提交</button>
-		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		      <button type="reset" class="layui-btn ">重置</button>
 		    </div>
 		  </div>
 		</form>
+	</div>
+	</div>
+	<div class="layui-carousel" id="showPic">
+	  <div carousel-item>
+	    <div><img src="images/show001.jpg"></div>
+	    <div><img src="images/show002.jpg"></div>
+	    <div><img src="images/show003.jpg"></div>
+	    <div><img src="images/show004.jpg"></div>
+	  </div>
 	</div>
 </body>
 </html>
