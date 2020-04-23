@@ -16,7 +16,6 @@ import cn.daoyun.entity.util.StringUtil;
 
 /**
  * 该类用户管理用户登录信息
- * @author cdfengyang
  *
  */
 public class UserAction extends ActionSupport {

@@ -16,12 +16,12 @@
 					children:[{
 						text:"课程管理",
 						attributes:{
-							url:"DepartmentManage.jsp"
+							url:"classManage.jsp"
 						}
 					},{
 						text:"学生管理",
 						attributes:{
-							url:"EmployeeManage.jsp"
+							url:"userManage.jsp"
 						}
 					},{
 						text:"信息管理",

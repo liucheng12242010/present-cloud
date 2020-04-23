@@ -12,7 +12,14 @@
         </action>
         <!-- 注册的映射配置 --> 
         <action name="register" class="cn.daoyun.action.registerAction"> 
-        	<result name="success" type="redirect" >/register.jsp</result>
+        	<result name="success" type="redirect" >/index.jsp</result>
+        </action>
+        <!-- 课程管理的映射配置 --> 
+        <action name="classManageSelect" class="cn.daoyun.action.classManageAction" method="select"> 
+        	<result name="select" type="redirect">/classManage.jsp</result>
+        </action>
+        <action name="classManageInsert" class="cn.daoyun.action.classManageAction" method="insert"> 
+        	<result name="insert" type="redirect">/success.jsp</result>
         </action>
 	</package>     
 </struts>
