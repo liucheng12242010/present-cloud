@@ -6,10 +6,10 @@ public class Classes {
 	private String classId;
 	private String className;
 	private String teacher;
-	private Date classBeginDate;
-	private Date classEndDate;
-	private Date createTime;
-	private Date updateTime;
+	private String classBeginDate;
+	private String classEndDate;
+	private String createTime;
+	private String updateTime;
 	
 	public String getClassId() {
 		return classId;
@@ -32,31 +32,31 @@ public class Classes {
 		this.teacher = teacher;
 	}
 	
-	public Date getClassBeginDate() {
+	public String getClassBeginDate() {
 		return classBeginDate;
 	}
-	public void setClassBeginDate(Date classBeginDate) {
+	public void setClassBeginDate(String classBeginDate) {
 		this.classBeginDate = classBeginDate;
 	}
 	
-	public Date getClassEndDate() {
+	public String getClassEndDate() {
 		return classEndDate;
 	}
-	public void setClassEndDate(Date classEndDate) {
+	public void setClassEndDate(String classEndDate) {
 		this.classEndDate = classEndDate;
 	}
 	
-	public Date getCreateTime() {
+	public String getCreateTime() {
 		return createTime;
 	}
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
 	}
 	
-	public Date getUpdateTime() {
+	public String getUpdateTime() {
 		return updateTime;
 	}
-	public void setUpdateTime(Date updateTime) {
+	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
 }

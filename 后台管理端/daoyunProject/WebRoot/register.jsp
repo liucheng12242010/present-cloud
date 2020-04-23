@@ -133,6 +133,18 @@
 		      </select>
 		    </div>
 		  </div>
+		  
+		  <div class="layui-form-item">
+		     <label class="layui-form-label">手机号码</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="cellPhone"  lay-verify="required" placeholder="请输入手机号码" autocomplete="off" class="layui-input">
+		    </div>
+		    <div class="layui-input-inline">
+		      <input type="text" name="vercode"  lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
+		      <button class="layui-btn layui-btn-primary layui-btn-fluid" id="LAY-user-getsmscode" type="button">获取验证码</button>
+		    </div>
+		  </div>
+		  
 		  <div class="layui-form-item layui-form-text">
 		    <label class="layui-form-label">详细介绍</label>
 		    <div class="layui-input-block">

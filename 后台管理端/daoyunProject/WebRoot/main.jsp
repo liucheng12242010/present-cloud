@@ -11,25 +11,53 @@
 		<script type="text/javascript" src="jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				var treeData=[{
-					text:"到云人力资源管理系统",
-					children:[{
-						text:"课程管理",
-						attributes:{
-							url:"classManage.jsp"
+				var treeData=[
+					{
+						text:"到云后台管理系统",
+						children:[{
+							text:"课程管理",
+							attributes:{
+								url:"classManage.jsp"
+							}
+						},{
+							text:"学生管理",
+							attributes:{
+								url:"userManage.jsp"
+							}
+						},{
+							text:"信息管理",
+							attributes:{
+								url:"PayManage.jsp"
+							}
+						}]
+					},
+					{
+						text:"数据字典",
+						children:[{
+							text:"用户角色",
+							attributes:{
+								url:"dictUserRole.jsp"
+							}
+						},{
+							text:"学校分类",
+							attributes:{
+								url:"dictSchool.jsp"
+							}
+						},{
+							text:"学院分类",
+							attributes:{
+								url:"dictCollege.jsp"
+							}
+						},{
+							text:"课程状态",
+							attributes:{
+								url:"dictCourseStatus.jsp"
+							}
 						}
-					},{
-						text:"学生管理",
-						attributes:{
-							url:"userManage.jsp"
-						}
-					},{
-						text:"信息管理",
-						attributes:{
-							url:"PayManage.jsp"
-						}
-					}]
-				}];
+						
+						]
+					}
+				];
 				//实例化树型
 				$("#tree").tree({
 					data:treeData,

@@ -19,36 +19,11 @@
     <div class="layui-fluid">
         <div class="layui-table" style="margin-top:30px;">
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend style="padding-top: 10px;">课程查询</legend>
+                <legend style="padding-top: 10px;">学院分类</legend>
             </fieldset>
           <div class="layui-form layui-card-header layuiadmin-card-header-auto">
-            <div class="layui-form-item">
-              <div class="layui-inline">
-               <label class="layui-form-label">课程ID</label>
-               <div class="layui-input-block">
-               <input type="text" id="classId" name="classes.classId" placeholder="请输入" autocomplete="off" class="layui-input">
-              </div>
-            </div>
-            <div class="layui-inline">
-             <label class="layui-form-label">课程名</label>
-             <div class="layui-input-block">
-              <input type="text" id="className" name="classes.className" placeholder="请输入" autocomplete="off" class="layui-input">
-             </div>
-           </div>
-          <div class="layui-inline">
-            <label class="layui-form-label">任课老师</label>
-            <div class="layui-input-block">
-              <input type="text" id="teacher" name="classes.teacher" placeholder="请输入" autocomplete="off" class="layui-input">
-            </div>
-          </div>
-          <div class="layui-inline">
-            <button class="layui-btn layuiadmin-btn-useradmin" class="layui-btn" data-type="reload" id="searchButton">
-              <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-            </button> 
-          </div>
-        </div>
          <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-			  <button class="layui-btn" data-method="setTop">新增课程</button>
+			  <button class="layui-btn" data-method="setTop">新增字典数据</button>
 		 </div>
         <table id="classTable" lay-filter="classTable"></table>
         <script id="toolbar" type="text/html">
@@ -95,14 +70,13 @@
             });
             table.render({
                 elem: '#classTable'
-                , url : 'classManageSelect'
+                , url : 'dictSelectCollege'
                 , cols: [[ //标题栏
                 	{type: 'checkbox', fixed: 'left'}
-                    , { field: 'classId', title: '课程Id', align: 'center', width: 200 }
-                    , { field: 'className', title: '课程名', align: 'center', width: 200 }
-                    , { field: 'teacher', title: '任课教师', align: 'center', width: 200 }
-                    , { field: 'classBeginDate', title: '课程开始时间', align: 'center', width: 180 }
-                    , { field: 'classEndDate', title: '课程结束时间', align: 'center', width: 180 }
+                    , { field: 'type', title: '类别', align: 'center', width: 200 }
+                    , { field: 'name', title: '名称', align: 'center', width: 200 }
+                    , { field: 'order', title: '显示顺序', align: 'center', width: 200 }
+                    , { field: 'status', title: '状态', align: 'center', width: 180 }
                     , {fixed: 'right', width: 165, align:'center', toolbar: '#bar'}
                 ]]
                 , id: 'classReload'
@@ -159,7 +133,7 @@
                         layer.close(index);
                     });
                 }
-            });   
+            });
             
           //触发事件
             var active = {
@@ -176,7 +150,7 @@
                     Math.random()*($(window).height()-300)
                     ,Math.random()*($(window).width()-390)
                   ] 
-                  ,content: 'addClass.jsp'
+                  ,content: 'addDict.jsp'
                   ,yes: function(){
                     $(that).click(); 
                   }

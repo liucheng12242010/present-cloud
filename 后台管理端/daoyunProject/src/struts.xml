@@ -5,6 +5,9 @@
 
 <struts>
 	<package name="personManage" namespace="/" extends="struts-default">
+	    <result-types> 
+	    	<result-type name="json" class="org.apache.struts2.json.JSONResult"/> 
+	    </result-types>
 	    <!-- 登录配置 -->
 		 <action name="login" class="cn.daoyun.action.UserAction">
             <result name="error" >/index.jsp</result>
@@ -16,9 +19,45 @@
         </action>
         <!-- 课程管理的映射配置 --> 
         <action name="classManageSelect" class="cn.daoyun.action.classManageAction" method="select"> 
-        	<result name="select" type="redirect">/classManage.jsp</result>
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
         </action>
         <action name="classManageInsert" class="cn.daoyun.action.classManageAction" method="insert"> 
+        	<result name="insert" type="redirect">/success.jsp</result>
+        </action>
+         <!-- 字典管理的映射配置 --> 
+        <action name="dictSelect" class="cn.daoyun.action.dictAction" method="selectRole"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
+        <action name="dictSelectSchool" class="cn.daoyun.action.dictAction" method="selectSchool"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
+        <action name="dictSelectCollege" class="cn.daoyun.action.dictAction" method="selectCollege"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
+        <action name="dictSelectCouserStatus" class="cn.daoyun.action.dictAction" method="selectCourseStatus"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
+        <action name="dictInsert" class="cn.daoyun.action.dictAction" method="insertRole"> 
         	<result name="insert" type="redirect">/success.jsp</result>
         </action>
 	</package>     

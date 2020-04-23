@@ -26,6 +26,22 @@ public class classManageAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private Classes classes=new Classes();
 	private String error;
+	private int page=1;
+	private int limit=10;
+	
+	public int getPage(){
+		return page;
+	}
+	public void setPage(int page){
+		this.page=page;
+	}
+
+	public int getLimit(){
+		return limit;
+	}
+	public void setLimit(int limit){
+		this.limit=limit;
+	}
 	
 	public Classes getClasses() {
 		return classes;
@@ -54,8 +70,11 @@ public class classManageAction extends ActionSupport {
     		ArrayList<Classes> classesList = classManage.selectClasses(con,classes);
     		session.setAttribute("classeslist", classesList);
     		
-    		JSONArray array = JSONArray.fromObject(new ArrayList[]{classesList});
+    		JSONArray array = JSONArray.fromObject(classesList);
     		Map<String,Object> result = new HashMap<String,Object>();
+    		result.put("code", 0);
+    		result.put("msg", "");
+    		result.put("count", classesList.size());
     		result.put("data", array);
     		ActionContext.getContext().getValueStack().set("jsonData", JSONObject.fromObject(result));
     		
