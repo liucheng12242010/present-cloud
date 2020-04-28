@@ -24,11 +24,6 @@
 							attributes:{
 								url:"userManage.jsp"
 							}
-						},{
-							text:"信息管理",
-							attributes:{
-								url:"PayManage.jsp"
-							}
 						}]
 					},
 					{
@@ -103,7 +98,6 @@
         	<div style="font-size: 15px; float: right; margin: 50px 20px 0px ">当前登录用户：&nbsp;<font  color="yellow">${currentUser.userName }</font></div>
         
         </div>
-        <div data-options="region:'south'" style="height:30px;padding:5px;" align="center"  >版权所有&nbsp;&nbsp;<p>lkj</p></div>
         <div data-options="region:'west',split:true" title="导航菜单" style="width:200px;">
         	<ul id="tree" class="easyui-tree" ></ul>
         </div>

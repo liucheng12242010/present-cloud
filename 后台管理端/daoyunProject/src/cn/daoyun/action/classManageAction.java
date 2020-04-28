@@ -25,9 +25,34 @@ public class classManageAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	private Classes classes=new Classes();
+	private String classId;
+	private String className;
+	private String teacher;
 	private String error;
 	private int page=1;
 	private int limit=10;
+	
+	public String getClassId(){
+		return classId;
+	}
+	public void setClassId(String classId){
+		this.classId=classId;
+	}
+	
+	public String getClassName(){
+		return className;
+	}
+	public void setClassName(String className){
+		this.className=className;
+	}
+	
+	public String getTeacher(){
+		return teacher;
+	}
+	public void setTeacher(String teacher){
+		this.teacher=teacher;
+	}
+
 	
 	public int getPage(){
 		return page;
@@ -67,6 +92,9 @@ public class classManageAction extends ActionSupport {
 		Connection con=null;
     	try{
     		con=dbUtil.getCon();
+    		classes.setClassId(classId);
+    		classes.setClassName(className);
+    		classes.setTeacher(teacher);
     		ArrayList<Classes> classesList = classManage.selectClasses(con,classes);
     		session.setAttribute("classeslist", classesList);
     		

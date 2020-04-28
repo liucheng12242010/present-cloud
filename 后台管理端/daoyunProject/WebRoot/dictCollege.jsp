@@ -74,9 +74,9 @@
                 , cols: [[ //标题栏
                 	{type: 'checkbox', fixed: 'left'}
                     , { field: 'type', title: '类别', align: 'center', width: 200 }
-                    , { field: 'name', title: '名称', align: 'center', width: 200 }
-                    , { field: 'order', title: '显示顺序', align: 'center', width: 200 }
-                    , { field: 'status', title: '状态', align: 'center', width: 180 }
+                    , { field: 'name', title: '名称', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'order', title: '显示顺序', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'status', title: '状态', align: 'center', edit: 'text',width: 180 }
                     , {fixed: 'right', width: 165, align:'center', toolbar: '#bar'}
                 ]]
                 , id: 'classReload'
@@ -172,27 +172,6 @@
               active[method] ? active[method].call(this, othis) : '';
             });
             
-            var active2 = {
-            	    reload: function(){
-            	      var classId = $('#classId');
-            	      //执行重载
-            	      table.reload('classReload', {
-            	        page: {
-            	          curr: 1 //重新从第 1 页开始
-            	        }
-            	        ,where: {
-            	          key: {
-            	            classId: classId.val()
-            	          }
-            	        }
-            	      }, 'data');
-            	    }
-            	  };
-            	  
-           	  $('.layui-form-item .layui-btn').on('click', function(){
-           	    var type = $(this).data('type');
-           	    active2[type] ? active2[type].call(this) : '';
-           	  });
             
         });
     </script>

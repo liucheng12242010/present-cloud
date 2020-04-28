@@ -17,6 +17,14 @@
         <action name="register" class="cn.daoyun.action.registerAction"> 
         	<result name="success" type="redirect" >/index.jsp</result>
         </action>
+        <!-- 学生管理的映射配置 --> 
+        <action name="studentSelect" class="cn.daoyun.action.UserAction" method="studentSelect"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
         <!-- 课程管理的映射配置 --> 
         <action name="classManageSelect" class="cn.daoyun.action.classManageAction" method="select"> 
         	<result name="select" type="json">

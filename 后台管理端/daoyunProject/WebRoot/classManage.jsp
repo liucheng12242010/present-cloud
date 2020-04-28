@@ -99,21 +99,22 @@
                 , cols: [[ //标题栏
                 	{type: 'checkbox', fixed: 'left'}
                     , { field: 'classId', title: '课程Id', align: 'center', width: 200 }
-                    , { field: 'className', title: '课程名', align: 'center', width: 200 }
-                    , { field: 'teacher', title: '任课教师', align: 'center', width: 200 }
-                    , { field: 'classBeginDate', title: '课程开始时间', align: 'center', width: 180 }
-                    , { field: 'classEndDate', title: '课程结束时间', align: 'center', width: 180 }
+                    , { field: 'className', title: '课程名', align: 'center',edit: 'text', width: 200 }
+                    , { field: 'teacher', title: '任课教师', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'classBeginDate', title: '课程开始时间', align: 'center', edit: 'text',width: 180 }
+                    , { field: 'classEndDate', title: '课程结束时间', align: 'center', edit: 'text', width: 180 }
                     , {fixed: 'right', width: 165, align:'center', toolbar: '#bar'}
                 ]]
                 , id: 'classReload'
+                , method: 'post'
 	            , page: true
 	            , limit: 50
 	            , cellMinWidth: 80
 	            , toolbar: '#toolbar' //开启头部工具栏，并为其绑定左侧模板
 	            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
 	                title: '提示'
-	                , layEvent: 'LAYTABLE_TIPS'
-	                , icon: 'layui-icon-tips'
+	            , layEvent: 'LAYTABLE_TIPS'
+	            , icon: 'layui-icon-tips'
 	            }]
             });
           //头工具栏事件
@@ -138,7 +139,13 @@
                         break;
                 };
             });
-
+          //监听单元格编辑
+            table.on('edit(classTable)', function(obj){
+              var value = obj.value //得到修改后的值
+              ,data = obj.data //得到所在行所有键值
+              ,field = obj.field; //得到字段
+              layer.msg('[classId: '+ data.classId +'] ' + field + ' 字段更改为：'+ value);
+            });
             //监听行工具事件
             table.on('tool(classTable)', function (obj) {
                 var data = obj.data;
@@ -201,17 +208,20 @@
             var active2 = {
             	    reload: function(){
             	      var classId = $('#classId');
+            	      var className = $('#className');
+            	      var teacher = $('#teacher');
+            	      //alert(className.val());
             	      //执行重载
             	      table.reload('classReload', {
-            	        page: {
+            	    	page: {
             	          curr: 1 //重新从第 1 页开始
             	        }
             	        ,where: {
-            	          key: {
-            	            classId: classId.val()
-            	          }
+            	            classId:classId.val(),
+            	            className:className.val(),
+            	            teacher:teacher.val()
             	        }
-            	      }, 'data');
+            	      });
             	    }
             	  };
             	  

@@ -33,7 +33,38 @@ public class classManageDao {
 	public ArrayList<Classes> selectClasses(Connection con,Classes classes) throws Exception{
 		    ArrayList<Classes> result = new ArrayList<Classes>();
 		    ResultSet rs;
-	    	String sql="select * from classes";
+		    String sql="select * from classes";
+		    int flag=0;
+		    if(!StringUtil.isEmpty(classes.getClassId()))
+			{
+		    	if(flag==0)
+		    	{
+		    		sql=sql+" where classId='"+classes.getClassId()+"'"; 
+		    		flag=1;
+		    	}
+			}
+		    if(!StringUtil.isEmpty(classes.getClassName()))
+	    	{
+		    	if(flag==0)
+		    	{
+		    		sql=sql+" where className='"+classes.getClassName()+"'";
+		    		flag=1;
+		    	}
+		    	else
+		    		sql=sql+" and className='"+classes.getClassName()+"'";
+		    		
+	    	}
+		    if(!StringUtil.isEmpty(classes.getTeacher()))
+	    	{
+		    	if(flag==0)
+		    	{
+		    		sql=sql+" where teacher='"+classes.getTeacher()+"'";
+		    		flag=1;
+		    	}
+		    	else
+		    		sql=sql+" and teacher='"+classes.getTeacher()+"'";
+		    		
+	    	}
 			PreparedStatement pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
