@@ -30,6 +30,19 @@ public class classManageDao {
 		return "success";
 	}
 	
+	public String deleteClass(Connection con,Classes classes) throws Exception{
+		String sql="delete from classes where classId=? and className=? and teacher=? and classBeginDate=? and classEndDate=?"
+				;
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, classes.getClassId());
+		pstmt.setString(2,classes.getClassName());
+		pstmt.setString(3, classes.getTeacher());
+		pstmt.setString(4, classes.getClassBeginDate());
+		pstmt.setString(5, classes.getClassEndDate());
+		int result = pstmt.executeUpdate();
+		return "success";
+	}
+	
 	public ArrayList<Classes> selectClasses(Connection con,Classes classes) throws Exception{
 		    ArrayList<Classes> result = new ArrayList<Classes>();
 		    ResultSet rs;

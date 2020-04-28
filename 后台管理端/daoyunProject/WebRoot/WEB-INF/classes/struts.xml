@@ -36,6 +36,9 @@
         <action name="classManageInsert" class="cn.daoyun.action.classManageAction" method="insert"> 
         	<result name="insert" type="redirect">/success.jsp</result>
         </action>
+        <action name="classManageDelete" class="cn.daoyun.action.classManageAction" method="delete"> 
+        	<result name="delete" type="redirect"> </result>
+        </action>
          <!-- 字典管理的映射配置 --> 
         <action name="dictSelect" class="cn.daoyun.action.dictAction" method="selectRole"> 
         	<result name="select" type="json">

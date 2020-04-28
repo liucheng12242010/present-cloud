@@ -202,9 +202,8 @@
             
             var active2 = {
             	    reload: function(){
-            	      var classId = $('#classId');
-            	      var className = $('#className');
-            	      var teacher = $('#teacher');
+            	      var userId = $('#userId');
+            	      var userName = $('#userName');
             	      //alert(className.val());
             	      //执行重载
             	      table.reload('classReload', {
@@ -212,9 +211,8 @@
             	          curr: 1 //重新从第 1 页开始
             	        }
             	        ,where: {
-            	            classId:classId.val(),
-            	            className:className.val(),
-            	            teacher:teacher.val()
+            	            userId:userId.val(),
+            	            userName:userName.val()            	  
             	        }
             	      });
             	    }

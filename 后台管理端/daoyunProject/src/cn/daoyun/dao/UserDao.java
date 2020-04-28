@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import cn.daoyun.entity.Dict;
 import cn.daoyun.entity.User;
+import cn.daoyun.entity.util.StringUtil;
 
 /**
  * 用户登录 的dao  
@@ -21,10 +22,18 @@ public class UserDao {
 	 * @return 返回当前登录用户
 	 * @throws Exception
 	 */
-	public ArrayList<User> selectUser(Connection con,String type) throws Exception{
+	public ArrayList<User> selectUser(Connection con,String type,User user) throws Exception{
 	    ArrayList<User> result = new ArrayList<User>();
 	    ResultSet rs;
     	String sql="select * from user where role='"+type+"'";
+	    if(!StringUtil.isEmpty(user.getUserId()))
+	    {
+	    	sql = sql + "and userId='"+user.getUserId()+"'";
+	    }
+	    if(!StringUtil.isEmpty(user.getUserName()))
+	    {
+	    	sql = sql + "and userName='"+user.getUserName()+"'";
+	    }
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
 		while(rs.next()){

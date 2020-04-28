@@ -143,6 +143,28 @@ public class classManageAction extends ActionSupport {
     	return "insert";
     }
     
+    public String delete(){
+    	HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		Connection con=null;
+    	try{
+    		con=dbUtil.getCon();
+    		classManage.deleteClass(con, classes);
+    		return "delete";
+    	}catch(Exception e){
+    		e.printStackTrace();
+			System.out.print(e);
+    	}finally{
+    		try {
+				dbUtil.closeCon(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.print(e);
+			}
+    	}
+    	return "delete";
+    }
+    
 	@Override
 	public String execute() throws Exception {
 		HttpServletRequest request=ServletActionContext.getRequest();

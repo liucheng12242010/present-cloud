@@ -30,8 +30,10 @@ public class UserAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private User user;
+	private User user=new User();
 	private String error;
+	private String userId;
+	private String userName;
 	
 	public User getUser() {
 		return user;
@@ -40,6 +42,23 @@ public class UserAction extends ActionSupport {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 	
 	public String getError() {
 		return error;
@@ -58,7 +77,9 @@ public class UserAction extends ActionSupport {
 		Connection con=null;
     	try{
     		con=dbUtil.getCon();
-    		ArrayList<User> userList = userDao.selectUser(con,"0");
+    		user.setUserId(userId);
+    		user.setUserName(userName);
+    		ArrayList<User> userList = userDao.selectUser(con,"0",user);
     		session.setAttribute("dictList", userList);
     		
     		JSONArray array = JSONArray.fromObject(userList);
