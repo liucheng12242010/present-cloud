@@ -22,17 +22,17 @@ public class UserDao {
 	 * @return 返回当前登录用户
 	 * @throws Exception
 	 */
-	public ArrayList<User> selectUser(Connection con,String type,User user) throws Exception{
+	public ArrayList<User> selectUser(Connection con,User user) throws Exception{
 	    ArrayList<User> result = new ArrayList<User>();
 	    ResultSet rs;
-    	String sql="select * from user where role='"+type+"'";
+    	String sql="select * from user where 1=1 ";
 	    if(!StringUtil.isEmpty(user.getUserId()))
 	    {
-	    	sql = sql + "and userId='"+user.getUserId()+"'";
+	    	sql = sql + " and userId='"+user.getUserId()+"'";
 	    }
 	    if(!StringUtil.isEmpty(user.getUserName()))
 	    {
-	    	sql = sql + "and userName='"+user.getUserName()+"'";
+	    	sql = sql + " and userName='"+user.getUserName()+"'";
 	    }
 		PreparedStatement pstmt=con.prepareStatement(sql);
 		rs=pstmt.executeQuery();
@@ -40,7 +40,12 @@ public class UserDao {
 			User userDomp = new User();
 			userDomp.setUserId(rs.getString("userId"));
 			userDomp.setUserName(rs.getString("userName"));
-			userDomp.setRole("学生");
+			if(rs.getString("role").equals("0"))
+				userDomp.setRole("学生");
+			if(rs.getString("role").equals("1"))
+				userDomp.setRole("老师");
+			if(rs.getString("role").equals("2"))
+				userDomp.setRole("助教");
 			userDomp.setSchool(rs.getString("school"));
 			userDomp.setGender(rs.getString("gender"));
 			userDomp.setCollege(rs.getString("college"));

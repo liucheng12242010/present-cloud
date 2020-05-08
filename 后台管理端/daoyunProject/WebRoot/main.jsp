@@ -20,9 +20,20 @@
 								url:"classManage.jsp"
 							}
 						},{
-							text:"学生管理",
+							text:"用户管理",
 							attributes:{
 								url:"userManage.jsp"
+							}
+						},{
+							text:"组织结构管理",
+							attributes:{
+								url:"orgManage.jsp"
+							}
+						}
+						,{
+							text:"参数设置",
+							attributes:{
+								url:"sysParam.jsp"
 							}
 						}]
 					},

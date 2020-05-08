@@ -79,7 +79,7 @@ public class UserAction extends ActionSupport {
     		con=dbUtil.getCon();
     		user.setUserId(userId);
     		user.setUserName(userName);
-    		ArrayList<User> userList = userDao.selectUser(con,"0",user);
+    		ArrayList<User> userList = userDao.selectUser(con,user);
     		session.setAttribute("dictList", userList);
     		
     		JSONArray array = JSONArray.fromObject(userList);

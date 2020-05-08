@@ -19,22 +19,34 @@
     <div class="layui-fluid">
         <div class="layui-table" style="margin-top:30px;">
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend style="padding-top: 10px;">用户查询</legend>
+                <legend style="padding-top: 10px;">组织架构查询</legend>
             </fieldset>
           <div class="layui-form layui-card-header layuiadmin-card-header-auto">
             <div class="layui-form-item">
               <div class="layui-inline">
-               <label class="layui-form-label">用户ID</label>
+               <label class="layui-form-label">学校</label>
                <div class="layui-input-block">
-               <input type="text" id="userId" name="user.userId" placeholder="请输入" autocomplete="off" class="layui-input">
+               <input type="text" id="school" name="organization.school" placeholder="请输入" autocomplete="off" class="layui-input">
               </div>
             </div>
             <div class="layui-inline">
-             <label class="layui-form-label">用户姓名</label>
+             <label class="layui-form-label">学院</label>
              <div class="layui-input-block">
-              <input type="text" id="userName" name="user.userName" placeholder="请输入" autocomplete="off" class="layui-input">
+              <input type="text" id="college" name="organization.college" placeholder="请输入" autocomplete="off" class="layui-input">
              </div>
            </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">专业</label>
+            <div class="layui-input-block">
+              <input type="text" id="major" name="organization.major" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+          </div>
+          <div class="layui-inline">
+            <label class="layui-form-label">年级</label>
+            <div class="layui-input-block">
+              <input type="text" id="grade" name="organization.grade" placeholder="请输入" autocomplete="off" class="layui-input">
+            </div>
+          </div>
           <div class="layui-inline">
             <button class="layui-btn layuiadmin-btn-useradmin" class="layui-btn" data-type="reload" id="searchButton">
               <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
@@ -42,7 +54,7 @@
           </div>
         </div>
          <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-			  <button class="layui-btn" data-method="setTop">新增用户</button>
+			  <button class="layui-btn" data-method="setTop">新增组织</button>
 		 </div>
         <table id="classTable" lay-filter="classTable"></table>
         <script id="toolbar" type="text/html">
@@ -89,15 +101,14 @@
             });
             table.render({
                 elem: '#classTable'
-                , url : 'studentSelect'
+                , url : 'orgManageSelect'
                 , cols: [[ //标题栏
                 	{type: 'checkbox', fixed: 'left'}
-                    , { field: 'userId', title: '用户Id', align: 'center', width: 200 }
-                    , { field: 'userName', title: '用户姓名', align: 'center',edit: 'text', width: 200 }
-                    , { field: 'role', title: '角色', align: 'center', edit: 'text',width: 200 }
-                    , { field: 'school', title: '学校', align: 'center', edit: 'text',width: 180 }
-                    , { field: 'gender', title: '性别', align: 'center', edit: 'text', width: 180 }
-                    , { field: 'college', title: '学院', align: 'center', edit: 'text', width: 180 }
+                    , { field: 'orgId', title: '组织Id', align: 'center', width: 200 }
+                    , { field: 'school', title: '学校', align: 'center',edit: 'text', width: 200 }
+                    , { field: 'college', title: '学院', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'major', title: '专业', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'grade', title: '年级', align: 'center', edit: 'text',width: 200 }
                     , {fixed: 'right', width: 165, align:'center', toolbar: '#bar'}
                 ]]
                 , id: 'classReload'
@@ -178,7 +189,7 @@
                     Math.random()*($(window).height()-300)
                     ,Math.random()*($(window).width()-390)
                   ] 
-                  ,content: 'register.jsp'
+                  ,content: 'addOrg.jsp'
                   ,yes: function(){
                     $(that).click(); 
                   }
@@ -202,8 +213,10 @@
             
             var active2 = {
             	    reload: function(){
-            	      var userId = $('#userId');
-            	      var userName = $('#userName');
+            	      var school = $('#school');
+            	      var college = $('#college');
+            	      var major = $('#major');
+            	      var grade = $('#grade');
             	      //alert(className.val());
             	      //执行重载
             	      table.reload('classReload', {
@@ -211,8 +224,10 @@
             	          curr: 1 //重新从第 1 页开始
             	        }
             	        ,where: {
-            	            userId:userId.val(),
-            	            userName:userName.val()            	  
+            	        	school:school.val(),
+            	        	college:college.val(),
+            	        	major:major.val(),
+            	        	grade:grade.val()
             	        }
             	      });
             	    }

@@ -25,6 +25,14 @@
         		</param>
         	</result>
         </action>
+        <!-- 系统参数的映射配置 --> 
+        <action name="sysParamSelect" class="cn.daoyun.action.sysParamAction" method="sysParamSelect"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
         <!-- 课程管理的映射配置 --> 
         <action name="classManageSelect" class="cn.daoyun.action.classManageAction" method="select"> 
         	<result name="select" type="json">
@@ -38,6 +46,17 @@
         </action>
         <action name="classManageDelete" class="cn.daoyun.action.classManageAction" method="delete"> 
         	<result name="delete" type="redirect"> </result>
+        </action>
+          <!-- 组织架构管理的映射配置 --> 
+        <action name="orgManageSelect" class="cn.daoyun.action.orgManageAction" method="select"> 
+        	<result name="select" type="json">
+        		<param name="root">
+        			jsonData
+        		</param>
+        	</result>
+        </action>
+        <action name="orgManageInsert" class="cn.daoyun.action.orgManageAction" method="insert"> 
+        	<result name="insert" type="redirect">/success.jsp</result>
         </action>
          <!-- 字典管理的映射配置 --> 
         <action name="dictSelect" class="cn.daoyun.action.dictAction" method="selectRole"> 

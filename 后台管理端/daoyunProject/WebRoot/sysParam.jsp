@@ -19,31 +19,9 @@
     <div class="layui-fluid">
         <div class="layui-table" style="margin-top:30px;">
             <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-                <legend style="padding-top: 10px;">用户查询</legend>
+                <legend style="padding-top: 10px;">系统参数设置</legend>
             </fieldset>
-          <div class="layui-form layui-card-header layuiadmin-card-header-auto">
-            <div class="layui-form-item">
-              <div class="layui-inline">
-               <label class="layui-form-label">用户ID</label>
-               <div class="layui-input-block">
-               <input type="text" id="userId" name="user.userId" placeholder="请输入" autocomplete="off" class="layui-input">
-              </div>
-            </div>
-            <div class="layui-inline">
-             <label class="layui-form-label">用户姓名</label>
-             <div class="layui-input-block">
-              <input type="text" id="userName" name="user.userName" placeholder="请输入" autocomplete="off" class="layui-input">
-             </div>
-           </div>
-          <div class="layui-inline">
-            <button class="layui-btn layuiadmin-btn-useradmin" class="layui-btn" data-type="reload" id="searchButton">
-              <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-            </button> 
-          </div>
-        </div>
-         <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-			  <button class="layui-btn" data-method="setTop">新增用户</button>
-		 </div>
+          
         <table id="classTable" lay-filter="classTable"></table>
         <script id="toolbar" type="text/html">
                 <div class="layui-btn-container">
@@ -89,16 +67,14 @@
             });
             table.render({
                 elem: '#classTable'
-                , url : 'studentSelect'
+                , url : 'sysParamSelect'
                 , cols: [[ //标题栏
                 	{type: 'checkbox', fixed: 'left'}
-                    , { field: 'userId', title: '用户Id', align: 'center', width: 200 }
-                    , { field: 'userName', title: '用户姓名', align: 'center',edit: 'text', width: 200 }
-                    , { field: 'role', title: '角色', align: 'center', edit: 'text',width: 200 }
-                    , { field: 'school', title: '学校', align: 'center', edit: 'text',width: 180 }
-                    , { field: 'gender', title: '性别', align: 'center', edit: 'text', width: 180 }
-                    , { field: 'college', title: '学院', align: 'center', edit: 'text', width: 180 }
-                    , {fixed: 'right', width: 165, align:'center', toolbar: '#bar'}
+                    , { field: 'experience', title: '单次签到经验值', align: 'center', edit: 'text', width: 200 }
+                    , { field: 'distance', title: '远程签到允许最大距离', align: 'center',edit: 'text', width: 200 }
+                    , { field: 'duration', title: '单次签到持续时长', align: 'center', edit: 'text',width: 200 }
+                    , { field: 'adminId', title: '最高管理员账号', align: 'center', edit: 'text',width: 180 }
+                    , { field: 'adminPassword', title: '最高管理员账号密码', align: 'center', edit: 'text', width: 180 }
                 ]]
                 , id: 'classReload'
                 , method: 'post'
@@ -139,7 +115,7 @@
               var value = obj.value //得到修改后的值
               ,data = obj.data //得到所在行所有键值
               ,field = obj.field; //得到字段
-              layer.msg('[classId: '+ data.classId +'] ' + field + ' 字段更改为：'+ value);
+              layer.msg(field + ' 字段更改为：'+ value);
             });
             //监听行工具事件
             table.on('tool(classTable)', function (obj) {

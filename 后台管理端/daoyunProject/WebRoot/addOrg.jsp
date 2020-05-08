@@ -10,7 +10,7 @@
         }
     </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>新增课程</title>
+<title>新增组织</title>
 <script src="Contents/layuiadmin/layui/layui.js"></script>
 <script>
 			layui.use(['form','upload','carousel','laydate'], function(){
@@ -22,14 +22,14 @@
 					var param = data.field; 
 					 $.ajax({
 		                    type: 'post',
-		                    url:  classManageInsert,
+		                    url:  orgManageInsert,
 		                    data: param,
 		                    dataType: 'json',
 		                    success: function (res) {    
 		                        if (res.Success == true) {
 		                        	layer.msg("新增成功！");
 		                        } else {
-		                        	layer.msg("课程Id已存在！");
+		                        	layer.msg("组织Id已存在！");
 		                        }
 		                    },
 		                    error: function () {
@@ -76,32 +76,32 @@
    <div class='layui-bg-gray'>
 	<div class="layui-main">  
 	    <fieldset class="layui-elem-field layui-field-title">
-		  <legend>新增一个新的课程</legend>
+		  <legend>新增一个新的组织</legend>
 		</fieldset>
-		<form action="classManageInsert" class="layui-form" method="post">
+		<form action="orgManageInsert" class="layui-form" method="post">
 		  <div class="layui-form-item">
-		    <label class="layui-form-label">课程Id</label>
+		    <label class="layui-form-label">组织Id</label>
 		    <div class="layui-input-inline">
-		      <input type="text" name="classes.classId"   lay-verify="required" placeholder="请输入课程Id" autocomplete="off" class="layui-input">
+		      <input type="text" name="organization.orgId" lay-verify="required" placeholder="请输入组织Id" autocomplete="off" class="layui-input">
 		    </div>
-		    <label class="layui-form-label">课程名称</label>
+		    <label class="layui-form-label">学校</label>
 		    <div class="layui-input-inline">
-		     <input type="text" name="classes.className"  lay-verify="required" placeholder="请输入课程名称" autocomplete="off" class="layui-input">
+		     <input type="text" name="organization.school" lay-verify="required" placeholder="请输入学校" autocomplete="off" class="layui-input">
 		    </div>
 		  </div>
 		  <div class="layui-form-item">
-		    <label class="layui-form-label">任课教师</label>
+		    <label class="layui-form-label">学院</label>
 		    <div class="layui-input-inline">
-		      <input type="text" name="classes.teacher"   lay-verify="required" placeholder="请输入任课教师" autocomplete="off" class="layui-input">
+		      <input type="text" name="organization.college"   lay-verify="required" placeholder="请输入学院" autocomplete="off" class="layui-input">
 		    </div>
-		    <label class="layui-form-label">开课时间</label>
+		    <label class="layui-form-label">专业</label>
 		    <div class="layui-input-inline">
-		        <input class="layui-input" id="classBeginDate" name="classes.classBeginDate" type="text" placeholder="yyyy-MM-dd">
-		      </div>
-		     <label class="layui-form-label">结课时间</label>
+		      <input type="text" name="organization.major"   lay-verify="required" placeholder="请输入专业" autocomplete="off" class="layui-input">
+		    </div>
+		    <label class="layui-form-label">年级</label>
 		    <div class="layui-input-inline">
-		        <input class="layui-input" id="classEndDate" name="classes.classEndDate" type="text" placeholder="yyyy-MM-dd">
-		      </div>
+		      <input type="text" name="organization.grade"   lay-verify="required" placeholder="请输入年级" autocomplete="off" class="layui-input">
+		    </div>
 		  </div>
 		  <div class="layui-form-item">
 		    <div class="layui-input-block">
