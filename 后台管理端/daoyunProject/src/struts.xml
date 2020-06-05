@@ -5,17 +5,24 @@
 
 <struts>
 	<package name="personManage" namespace="/" extends="struts-default">
-	    <result-types> 
+		<result-types> 
 	    	<result-type name="json" class="org.apache.struts2.json.JSONResult"/> 
 	    </result-types>
+		
 	    <!-- 登录配置 -->
 		 <action name="login" class="cn.daoyun.action.UserAction">
+		    <!-- 
+			    <interceptor-ref name="token">
+			    	<param name="includeMethods"></param>
+			    </interceptor-ref>
+			    <result name="invalid.token" >/index.jsp</result>
+		     -->
             <result name="error" >/index.jsp</result>
-            <result name="success" type="redirect" >/main.jsp</result>
+            <result name="success"  >/main.jsp</result>
         </action>
         <!-- 注册的映射配置 --> 
         <action name="register" class="cn.daoyun.action.registerAction"> 
-        	<result name="success" type="redirect" >/index.jsp</result>
+        	<result name="success">/index.jsp</result>
         </action>
         <!-- 学生管理的映射配置 --> 
         <action name="studentSelect" class="cn.daoyun.action.UserAction" method="studentSelect"> 
@@ -42,10 +49,10 @@
         	</result>
         </action>
         <action name="classManageInsert" class="cn.daoyun.action.classManageAction" method="insert"> 
-        	<result name="insert" type="redirect">/success.jsp</result>
+        	<result name="insert" >/success.jsp</result>
         </action>
         <action name="classManageDelete" class="cn.daoyun.action.classManageAction" method="delete"> 
-        	<result name="delete" type="redirect"> </result>
+        	<result name="delete" > </result>
         </action>
           <!-- 组织架构管理的映射配置 --> 
         <action name="orgManageSelect" class="cn.daoyun.action.orgManageAction" method="select"> 
@@ -56,7 +63,7 @@
         	</result>
         </action>
         <action name="orgManageInsert" class="cn.daoyun.action.orgManageAction" method="insert"> 
-        	<result name="insert" type="redirect">/success.jsp</result>
+        	<result name="insert" >/success.jsp</result>
         </action>
          <!-- 字典管理的映射配置 --> 
         <action name="dictSelect" class="cn.daoyun.action.dictAction" method="selectRole"> 
@@ -88,7 +95,7 @@
         	</result>
         </action>
         <action name="dictInsert" class="cn.daoyun.action.dictAction" method="insertRole"> 
-        	<result name="insert" type="redirect">/success.jsp</result>
+        	<result name="insert" >/success.jsp</result>
         </action>
 	</package>     
 </struts>

@@ -1,6 +1,7 @@
 package cn.daoyun.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -68,5 +69,40 @@ public class UserDao {
 			currentUser.setPassword(rs.getString("password"));
 		}
 		return currentUser;
+	}
+	
+	public String addToken(Connection con,User user,String token) throws Exception{
+		String sql="insert into tokenTable(userid,token,createTime) values(?,?,?)"
+				;
+		long nowMillis = System.currentTimeMillis();
+		Date d = new Date(nowMillis);
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, user.getUserId());
+		pstmt.setString(2,token);
+		pstmt.setDate(3,d);
+		int result = pstmt.executeUpdate();
+		return "success";
+	}
+	
+	public String selectToken(Connection con,String token) throws Exception{
+		String sql="select * from tokenTable where token = ?"
+				;
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, token);
+		ResultSet rs=pstmt.executeQuery();
+		
+		if(rs.next()){
+			return token;
+		}
+		return "false";
+	}
+	
+	public String deleteToken(Connection con,String token) throws Exception{
+		String sql="delete from tokenTable where token = ?"
+				;
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, token);
+		int result = pstmt.executeUpdate();
+		return "false";
 	}
 }

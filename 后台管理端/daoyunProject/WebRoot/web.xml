@@ -6,12 +6,12 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name></display-name>	
   <welcome-file-list>
-    <welcome-file>welcome.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
   
    <!-- 配置过滤器 -->
-  	<filter>
+  		<filter>
     	<filter-name>StrutsPrepareAndExecuteFilter</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
 	</filter>
