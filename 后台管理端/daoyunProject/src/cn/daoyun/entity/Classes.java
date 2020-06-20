@@ -10,6 +10,8 @@ public class Classes {
 	private String classEndDate;
 	private String createTime;
 	private String updateTime;
+	private String startSignin;
+	private String endSignin;
 	
 	public String getClassId() {
 		return classId;
@@ -58,5 +60,19 @@ public class Classes {
 	}
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+	
+	public String getStartSignin() {
+		return startSignin;
+	}
+	public void setStartSignin(String startSignin) {
+		this.startSignin = startSignin;
+	}
+	
+	public String getEndSignin() {
+		return endSignin;
+	}
+	public void setEndSignin(String endSignin) {
+		this.endSignin = endSignin;
 	}
 }

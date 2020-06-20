@@ -43,6 +43,22 @@ public class classManageDao {
 		return "success";
 	}
 	
+	public String signin(Connection con,Classes classes) throws Exception{
+		String sql="update classes set startsignin=now(),endsignin=adddate(now(),interval 1 minute)"
+				+ " where classId=?"
+				;
+		PreparedStatement pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, classes.getClassId());
+		int result = pstmt.executeUpdate();
+	    sql="update studyrecord set status=1"
+				+ " where classId=?"
+				;
+		pstmt=con.prepareStatement(sql);
+		pstmt.setString(1, classes.getClassId());
+		result = pstmt.executeUpdate();
+		return "success";
+	}
+	
 	public ArrayList<Classes> selectClasses(Connection con,Classes classes) throws Exception{
 		    ArrayList<Classes> result = new ArrayList<Classes>();
 		    ResultSet rs;

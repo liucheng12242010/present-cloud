@@ -59,6 +59,7 @@
                 </div>
             </script>
             <script id="bar" type="text/html">
+				<a class="layui-btn layui-btn-xs" lay-event="signin">签到</a>
                 <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
                 <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
             </script>
@@ -165,6 +166,15 @@
                         });
                         layer.close(index);
                     });
+                }else if (obj.event === 'signin') {
+                	alert('签到开始，持续60s');
+                	$.ajax({
+            			type:'post'
+            			,url:'signin'
+            			,data:data
+            			,success:function(data){
+            			}
+            		});
                 }
             });   
             
@@ -229,7 +239,6 @@
            	    var type = $(this).data('type');
            	    active2[type] ? active2[type].call(this) : '';
            	  });
-            
         });
     </script>
 </body>

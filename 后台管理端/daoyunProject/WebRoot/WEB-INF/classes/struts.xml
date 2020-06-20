@@ -9,6 +9,11 @@
 	    	<result-type name="json" class="org.apache.struts2.json.JSONResult"/> 
 	    </result-types>
 		
+		<!-- 签到配置 -->
+		 <action name="signin" class="cn.daoyun.action.classManageAction" method="signin">
+            <result name="signin"></result>
+        </action>
+		
 	    <!-- 登录配置 -->
 		 <action name="login" class="cn.daoyun.action.UserAction">
 		    <!-- 

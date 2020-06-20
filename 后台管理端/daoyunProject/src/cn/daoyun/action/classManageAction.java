@@ -143,6 +143,29 @@ public class classManageAction extends ActionSupport {
     	return "insert";
     }
     
+    public String signin(){
+    	HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		Connection con=null;
+    	try{
+    		con=dbUtil.getCon();
+    		classes.setClassId(classId);
+    		classManage.signin(con, classes);
+    		return "signin";
+    	}catch(Exception e){
+    		e.printStackTrace();
+			System.out.print(e);
+    	}finally{
+    		try {
+				dbUtil.closeCon(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.print(e);
+			}
+    	}
+    	return "signin";
+    }
+    
     public String delete(){
     	HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
