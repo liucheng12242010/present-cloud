@@ -6,12 +6,24 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name></display-name>	
   <welcome-file-list>
-    <welcome-file>welcome.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
-  
+    <filter>
+        <filter-name>redisp</filter-name>
+        <filter-class>
+			cn.daoyun.entity.util.ReDispatcherFilter</filter-class>
+        <init-param>
+            <param-name>includeServlets</param-name>
+            <param-value>LoginServlet,ListServlet,SignServlet,JoinServlet,List2Servlet</param-value>
+           </init-param>
+     </filter>
+    <filter-mapping>
+        <filter-name>redisp</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
    <!-- 配置过滤器 -->
-  	<filter>
+  		<filter>
     	<filter-name>StrutsPrepareAndExecuteFilter</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
 	</filter>
@@ -19,7 +31,55 @@
 		<filter-name>StrutsPrepareAndExecuteFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
-  
-  
+	
+	
+  	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>cn.daoyun.mobile.LoginServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+    	<servlet>
+		<servlet-name>ListServlet</servlet-name>
+		<servlet-class>cn.daoyun.mobile.ListServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ListServlet</servlet-name>
+		<url-pattern>/ListServlet</url-pattern>
+	</servlet-mapping>
+	
+	    	<servlet>
+		<servlet-name>List2Servlet</servlet-name>
+		<servlet-class>cn.daoyun.mobile.List2Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>List2Servlet</servlet-name>
+		<url-pattern>/List2Servlet</url-pattern>
+	</servlet-mapping>
+	
+    	<servlet>
+		<servlet-name>SignServlet</servlet-name>
+		<servlet-class>cn.daoyun.mobile.SignServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SignServlet</servlet-name>
+		<url-pattern>/SignServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>JoinServlet</servlet-name>
+		<servlet-class>cn.daoyun.mobile.JoinServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>JoinServlet</servlet-name>
+		<url-pattern>/JoinServlet</url-pattern>
+	</servlet-mapping>
   
 </web-app>

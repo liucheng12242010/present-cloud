@@ -60,8 +60,15 @@ public class SignServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 		String result = "";
+		String exp = "";
 		try {
-			String sql = "select STATUS from studyrecord where USERID =? and CLASSID = ?";
+			String sql = "select EXPERIENCE from sysparam";
+			PreparedStatement pstmtEx = conn.prepareStatement(sql);
+			ResultSet rsEx = pstmtEx.executeQuery();
+			if(rsEx.first()) {
+				exp =rsEx.getString("EXPERIENCE");
+			}
+			sql = "select STATUS from studyrecord where USERID =? and CLASSID = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2,classId);
@@ -83,12 +90,18 @@ public class SignServlet extends HttpServlet {
 						Date date2 = format.parse(endTime);
 						Date date3 = new Date();
 						if(date3.getTime()>date1.getTime() && date3.getTime()<date2.getTime()) {
-							sql = "update studyrecord set EXPERIENCE =EXPERIENCE+2 , STATUS = 2 where USERID = ? and CLASSID = ?";
+							sql = "update studyrecord set EXPERIENCE =EXPERIENCE+? , STATUS = 2 where USERID = ? and CLASSID = ?";
 							PreparedStatement pstmt3 = conn.prepareStatement(sql);
-							pstmt3.setString(1,id);
-							pstmt3.setString(2,classId);
+							if(exp!="" && exp!=null) {
+								pstmt3.setInt(1, Integer.parseInt(exp));
+							}else {
+								pstmt3.setInt(1, 2);
+								exp = "2";
+							}
+							pstmt3.setString(2,id);
+							pstmt3.setString(3,classId);
 							int rs3 = pstmt3.executeUpdate();
-							result = "签到成功获得两点经验值";
+							result = "签到成功获得"+exp+"经验值";
 						}
 					}
 					

@@ -47,6 +47,8 @@ public class UserDao {
 				userDomp.setRole("老师");
 			if(rs.getString("role").equals("2"))
 				userDomp.setRole("助教");
+			if(rs.getString("role").equals("3"))
+				userDomp.setRole("管理员");
 			userDomp.setSchool(rs.getString("school"));
 			userDomp.setGender(rs.getString("gender"));
 			userDomp.setCollege(rs.getString("college"));
