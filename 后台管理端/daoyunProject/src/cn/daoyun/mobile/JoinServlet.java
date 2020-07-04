@@ -64,9 +64,10 @@ public class JoinServlet extends HttpServlet {
 			ResultSet rs = pstmt.executeQuery();
 			rs.last();
 			if(rs.getRow()>0) {
-				sql = "select c.CLASSNAME,c.CLASSID,c.TEACHER from user u,classes c ,studyrecord s where c.CLASSID = s.classid and u.USERID = s.userid and s.USERID = ?";
+				sql = "select c.CLASSNAME,c.CLASSID,c.TEACHER from user u,classes c ,studyrecord s where c.CLASSID = s.classid and u.USERID = s.userid and s.USERID = ? and s.classid = ?";
 				PreparedStatement pstmtSelect=conn.prepareStatement(sql);
 				pstmtSelect.setString(1, id);
+				pstmtSelect.setString(2, classId);
 				ResultSet rs2 = pstmtSelect.executeQuery();
 				rs2.last();
 				if(rs2.getRow()>0) {
