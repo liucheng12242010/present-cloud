@@ -12,7 +12,7 @@ public class DbUtil {
 
 	private String url="jdbc:mysql://129.204.242.132:3306/presentcloud";
 	private String user="root";
-	private String password="123";
+	private String password="Csj301059121";
 	private String driver="com.mysql.jdbc.Driver";
 	
 	public Connection getCon() throws Exception{
